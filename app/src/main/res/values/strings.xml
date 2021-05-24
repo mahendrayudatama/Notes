@@ -1,8 +1,25 @@
 <resources>
-    <string name="app_name">MyNotesApp</string>
-    <string name="title">Judul</string>
-    <string name="description">Deskripsi</string>
+    <string name="app_name">Notes App</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
     <string name="submit">Submit</string>
-    <string name="delete">Hapus</string>
+    <string name="change">Change</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
     <string name="date">Date</string>
+    <string name="change_language_settings">Language Settings</string>
+    <string name="summary_notification">Change your preferences language</string>
+    <string name="title_settings">Language preferences</string>
+    <string name="notification">Notifications</string>
+    <string name="title_notification">Notifications</string>
+    <string name="toast_success">Notification Actived</string>
+    <string name="change_dialog_title">Cancel</string>
+    <string name="change_dialog_message">Do you want to undo changes to the form?</string>
+    <string name="delete_dialog_title">Delete Notes</string>
+    <string name="delete_dialog_message">Are you sure you want to delete this item?</string>
+    <string name="positive_button">Yes</string>
+    <string name="negative_button">No</string>
+    <string name="add_item">One item added successfully</string>
+    <string name="update_item">One item has been successfully modified</string>
+    <string name="delete_item">One item was successfully deleted</string>
 </resources>

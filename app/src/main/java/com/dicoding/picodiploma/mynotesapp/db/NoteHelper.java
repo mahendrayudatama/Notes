@@ -10,11 +10,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import static android.provider.BaseColumns._ID;
 import static com.dicoding.picodiploma.mynotesapp.db.DatabaseContract.NoteColumns.TABLE_NAME;
 
-
-/**
- * Created by sidiqpermana on 11/23/16.
- */
-
 public class NoteHelper {
     private static final String DATABASE_TABLE = TABLE_NAME;
     private static DatabaseHelper dataBaseHelper;
@@ -48,12 +43,6 @@ public class NoteHelper {
             database.close();
     }
 
-
-    /**
-     * Ambil data dari semua note yang ada di dalam database
-     *
-     * @return cursor hasil queryAll
-     */
     public Cursor queryAll() {
         return database.query(
                 DATABASE_TABLE,
@@ -65,12 +54,6 @@ public class NoteHelper {
                 _ID + " ASC");
     }
 
-    /**
-     * Ambil data dari note berdasarakan parameter id
-     *
-     * @param id id note yang dicari
-     * @return cursor hasil queryAll
-     */
     public Cursor queryById(String id) {
         return database.query(DATABASE_TABLE, null
                 , _ID + " = ?"
@@ -81,33 +64,14 @@ public class NoteHelper {
                 , null);
     }
 
-    /**
-     * Simpan data ke dalam database
-     *
-     * @param values nilai data yang akan di simpan
-     * @return long id dari data yang baru saja di masukkan
-     */
     public long insert(ContentValues values) {
         return database.insert(DATABASE_TABLE, null, values);
     }
 
-    /**
-     * Update data dalam database
-     *
-     * @param id     data dengan id berapa yang akan di update
-     * @param values nilai data baru
-     * @return int jumlah data yang ter-update
-     */
     public int update(String id, ContentValues values) {
         return database.update(DATABASE_TABLE, values, _ID + " = ?", new String[]{id});
     }
 
-    /**
-     * Delete data dalam database
-     *
-     * @param id data dengan id berapa yang akan di delete
-     * @return int jumlah data yang ter-delete
-     */
     public int deleteById(String id) {
         return database.delete(DATABASE_TABLE, _ID + " = ?", new String[]{id});
     }

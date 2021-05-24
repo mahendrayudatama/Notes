@@ -8,10 +8,6 @@ import com.dicoding.picodiploma.mynotesapp.db.DatabaseContract.NoteColumns;
 
 import static com.dicoding.picodiploma.mynotesapp.db.DatabaseContract.NoteColumns.TABLE_NAME;
 
-/**
- * Created by sidiqpermana on 11/23/16.
- */
-
 class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "dbnoteapp";
@@ -39,15 +35,9 @@ class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_TABLE_NOTE);
     }
 
-    /*
-    Method onUpgrade akan di panggil ketika terjadi perbedaan versi
-    Gunakan method onUpgrade untuk melakukan proses migrasi data
-     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        /*
-        Drop table tidak dianjurkan ketika proses migrasi terjadi dikarenakan data user akan hilang,
-        */
+
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }

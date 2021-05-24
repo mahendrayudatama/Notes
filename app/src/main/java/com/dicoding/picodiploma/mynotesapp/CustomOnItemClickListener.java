@@ -2,10 +2,6 @@ package com.dicoding.picodiploma.mynotesapp;
 
 import android.view.View;
 
-/**
- * Created by sidiqpermana on 10/29/16.
- */
-
 public class CustomOnItemClickListener implements View.OnClickListener {
     private final int position;
     private final OnItemClickCallback onItemClickCallback;

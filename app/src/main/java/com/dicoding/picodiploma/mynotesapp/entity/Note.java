@@ -3,10 +3,6 @@ package com.dicoding.picodiploma.mynotesapp.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by sidiqpermana on 11/23/16.
- */
-
 public class Note implements Parcelable {
     private int id;
     private String title;

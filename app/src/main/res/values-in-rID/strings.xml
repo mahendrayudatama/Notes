@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catatan</string>
+    <string name="title">Judul</string>
+    <string name="description">Deskripsi</string>
+    <string name="change">Ubah</string>
+    <string name="submit">Konfirmasi</string>
+    <string name="delete">Hapus</string>
+    <string name="update">Perbarui</string>
+    <string name="date">Tanggal</string>
+    <string name="change_language_settings">Ganti Bahasa</string>
+    <string name="summary_notification">Ganti Bahasa Yang Anda Gunakan</string>
+    <string name="title_settings">Preferensi Bahasa</string>
+    <string name="notification">Notifikasi</string>
+    <string name="title_notification">Notifikasi</string>
+    <string name="toast_success">Berhasil Mengaktifkan Notifikasi</string>
+    <string name="change_dialog_title">Batal</string>
+    <string name="change_dialog_message">Apakah anda ingin membatalkan perubahan pada form?</string>
+    <string name="delete_dialog_title">Hapus Note</string>
+    <string name="delete_dialog_message">Apakah anda yakin ingin menghapus item ini?</string>
+    <string name="positive_button">Ya</string>
+    <string name="negative_button">Tidak</string>
+    <string name="add_item">Satu item berhasil ditambahkan</string>
+    <string name="update_item">Satu item berhasil diubah</string>
+    <string name="delete_item">Satu item berhasil dihapus</string>
+</resources>
+

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -39,8 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
         setContentView(R.layout.activity_main);
 
         if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle("Notes");
-
+            getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
         progressBar = findViewById(R.id.progressbar);
         rvNotes = findViewById(R.id.rv_notes);
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
@@ -120,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data != null) {
-            // Akan dipanggil jika request codenya ADD
             if (requestCode == NoteAddUpdateActivity.REQUEST_ADD) {
                 if (resultCode == NoteAddUpdateActivity.RESULT_ADD) {
                     Note note = data.getParcelableExtra(NoteAddUpdateActivity.EXTRA_NOTE);
@@ -128,15 +128,11 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
                     adapter.addItem(note);
                     rvNotes.smoothScrollToPosition(adapter.getItemCount() - 1);
 
-                    showSnackbarMessage("Satu item berhasil ditambahkan");
+                    showSnackbarMessage(getResources().getString(R.string.add_item));
                 }
             }
-            // Update dan Delete memiliki request code sama akan tetapi result codenya berbeda
             else if (requestCode == NoteAddUpdateActivity.REQUEST_UPDATE) {
-                /*
-                Akan dipanggil jika result codenya  UPDATE
-                Semua data di load kembali dari awal
-                */
+
                 if (resultCode == NoteAddUpdateActivity.RESULT_UPDATE) {
 
                     Note note = data.getParcelableExtra(NoteAddUpdateActivity.EXTRA_NOTE);
@@ -145,34 +141,46 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
                     adapter.updateItem(position, note);
                     rvNotes.smoothScrollToPosition(position);
 
-                    showSnackbarMessage("Satu item berhasil diubah");
+                    showSnackbarMessage(getResources().getString(R.string.update_item));
                 }
-                /*
-                Akan dipanggil jika result codenya DELETE
-                Delete akan menghapus data dari list berdasarkan dari position
-                */
+
                 else if (resultCode == NoteAddUpdateActivity.RESULT_DELETE) {
                     int position = data.getIntExtra(NoteAddUpdateActivity.EXTRA_POSITION, 0);
 
                     adapter.removeItem(position);
 
-                    showSnackbarMessage("Satu item berhasil dihapus");
+                    showSnackbarMessage(getResources().getString(R.string.delete_item));
                 }
             }
         }
     }
 
-    /**
-     * Tampilkan snackbar
-     *
-     * @param message inputan message
-     */
+
     private void showSnackbarMessage(String message) {
         Snackbar.make(rvNotes, message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_form, menu);
+        MenuItem item = menu.findItem(R.id.action_delete)
+                .setVisible(false);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_change_settings) {
+            Intent mIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(mIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 
 interface LoadNotesCallback {
     void preExecute();
+
     void postExecute(ArrayList<Note> notes);
 }

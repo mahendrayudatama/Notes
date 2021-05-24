@@ -67,8 +67,8 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
         String btnTitle;
 
         if (isEdit) {
-            actionBarTitle = "Ubah";
-            btnTitle = "Update";
+            actionBarTitle = getResources().getString(R.string.change);
+            btnTitle = getResources().getString(R.string.change);
 
             if (note != null) {
                 edtTitle.setText(note.getTitle());
@@ -96,9 +96,6 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
             String title = edtTitle.getText().toString().trim();
             String description = edtDescription.getText().toString().trim();
 
-            /*
-            Jika fieldnya masih kosong maka tampilkan error
-             */
             if (TextUtils.isEmpty(title)) {
                 edtTitle.setError("Field can not be blank");
                 return;
@@ -111,14 +108,10 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
             intent.putExtra(EXTRA_NOTE, note);
             intent.putExtra(EXTRA_POSITION, position);
 
-            // Gunakan contentvalues untuk menampung data
             ContentValues values = new ContentValues();
             values.put(TITLE, title);
             values.put(DESCRIPTION, description);
 
-            /*
-            Jika merupakan edit maka setresultnya UPDATE, dan jika bukan maka setresultnya ADD
-            */
             if (isEdit) {
                 long result = noteHelper.update(String.valueOf(note.getId()), values);
                 if (result > 0) {
@@ -166,6 +159,10 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
         } else if (id == android.R.id.home) {
             showAlertDialog(ALERT_DIALOG_CLOSE);
         }
+        if(id ==  R.id.action_change_settings) {
+            Intent mIntent = new Intent(NoteAddUpdateActivity.this, SettingsActivity.class);
+            startActivity(mIntent);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -174,21 +171,16 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
         showAlertDialog(ALERT_DIALOG_CLOSE);
     }
 
-    /*
-    Konfirmasi dialog sebelum proses batal atau hapus
-    close = 10
-    deleteNote = 20
-     */
     private void showAlertDialog(int type) {
         final boolean isDialogClose = type == ALERT_DIALOG_CLOSE;
         String dialogTitle, dialogMessage;
 
         if (isDialogClose) {
-            dialogTitle = "Batal";
-            dialogMessage = "Apakah anda ingin membatalkan perubahan pada form?";
+            dialogTitle = getResources().getString(R.string.change_dialog_title);
+            dialogMessage = getResources().getString(R.string.change_dialog_message);
         } else {
-            dialogMessage = "Apakah anda yakin ingin menghapus item ini?";
-            dialogTitle = "Hapus Note";
+            dialogMessage = getResources().getString(R.string.delete_dialog_message);
+            dialogTitle = getResources().getString(R.string.delete_dialog_title);
         }
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -196,7 +188,7 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
         alertDialogBuilder
                 .setMessage(dialogMessage)
                 .setCancelable(false)
-                .setPositiveButton("Ya", (dialog, id) -> {
+                .setPositiveButton(getResources().getString(R.string.positive_button), (dialog, id) -> {
                     if (isDialogClose) {
                         finish();
                     } else {
@@ -211,7 +203,7 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
                         }
                     }
                 })
-                .setNegativeButton("Tidak", (dialog, id) -> dialog.cancel());
+                .setNegativeButton(getResources().getString(R.string.negative_button), (dialog, id) -> dialog.cancel());
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
