@@ -30,7 +30,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String title = TITLE;
         int notifId = ID_REPEATING;
-        String message = "Sudahkah Anda Mencatat Hari ini?";
+        String message = context.getResources().getString(R.string.reminder_message);
         showAlarmNotification(context, title, message, notifId);
     }
 
@@ -113,6 +113,6 @@ public class AlarmReceiver extends BroadcastReceiver {
             alarmManager.cancel(pendingIntent);
         }
 
-        Toast.makeText(context, "Alarm Dibatalkan", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, context.getResources().getString(R.string.cancel_alarm), Toast.LENGTH_SHORT).show();
     }
 }

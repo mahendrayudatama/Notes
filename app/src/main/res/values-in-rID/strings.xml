@@ -23,5 +23,7 @@
     <string name="add_item">Satu item berhasil ditambahkan</string>
     <string name="update_item">Satu item berhasil diubah</string>
     <string name="delete_item">Satu item berhasil dihapus</string>
+    <string name="reminder_message">Sudahkah Anda Mencatat Hari ini?</string>
+    <string name="cancel_alarm">Alarm Dibatalkan</string>
 </resources>
 

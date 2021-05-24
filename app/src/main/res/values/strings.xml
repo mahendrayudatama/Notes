@@ -22,4 +22,6 @@
     <string name="add_item">One item added successfully</string>
     <string name="update_item">One item has been successfully modified</string>
     <string name="delete_item">One item was successfully deleted</string>
+    <string name="reminder_message">Have You Noted Today?</string>
+    <string name="cancel_alarm">Alarm Cancelled</string>
 </resources>
