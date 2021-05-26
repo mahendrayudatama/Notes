@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.dicoding.picodiploma.mynotesapp.MainActivity">
-
     <ProgressBar
         android:id="@+id/progressbar"
         android:layout_width="48dp"
