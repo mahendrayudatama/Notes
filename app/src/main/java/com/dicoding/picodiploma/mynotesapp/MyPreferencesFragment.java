@@ -22,7 +22,7 @@ public class MyPreferencesFragment extends PreferenceFragmentCompat implements S
 
     private void init(){
         alarmReceiver = new AlarmReceiver();
-        LANGUAGE = "Language Settings";
+        LANGUAGE = getResources().getString(R.string.change_language_settings);
         NOTIFICATION = "Notification";
         languagePreference = findPreference(LANGUAGE);
         notificationPreference = findPreference(NOTIFICATION);

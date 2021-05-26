@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D7DDE3"
     android:fitsSystemWindows="true"
     tools:context="com.dicoding.picodiploma.mynotesapp.MainActivity">
 
@@ -19,8 +20,12 @@
         android:id="@+id/rv_notes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="always"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:rippleColor="#B0B6CA"
         tools:listitem="@layout/item_note" />
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
@@ -28,8 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:foregroundGravity="bottom"
+        app:backgroundTint="#FDB500"
         app:fabSize="normal"
         app:layout_anchor="@id/rv_notes"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_add" />
+        app:rippleColor="#6DFFE6A4"
+        app:srcCompat="@drawable/ic_add"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
